@@ -50,6 +50,9 @@ function buildNav() {
     navItem.insertAdjacentHTML('afterbegin', `<a href="#${section.id}" class="menu__link">${section.dataset.nav}</a>`);
     // Append the navItem to navList
     navList.appendChild(navItem);
+
+    // Create a smooth scrolling when click navItem
+    scrollBehavior(navItem, section);
   })
 
   // Append the navList to navBar
@@ -62,7 +65,15 @@ buildNav();
 
 
 // Scroll to anchor ID using scrollTO event
-
+function scrollBehavior(navItem, section) {
+  navItem.addEventListener('click', function (event) {
+    event.preventDefault();
+    window.scrollTo({
+      top: section.offsetTop,
+      behavior: "smooth"
+    });
+  });
+}
 
 /**
  * End Main Functions
