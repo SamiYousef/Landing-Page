@@ -64,8 +64,8 @@ buildNav();
 // Add class 'active' to section when near top of viewport
 const navLi = document.querySelectorAll(".menu__link");
 
-window.addEventListener('scroll', function () {
-  var activeSection;
+window.addEventListener('scroll', () => {
+  let activeSection;
 
   // Search for active section
   sections.forEach((section) => {
@@ -95,7 +95,7 @@ window.addEventListener('scroll', function () {
 
 // Scroll to anchor ID using scrollTO event
 function scrollBehavior(navItem, section) {
-  navItem.addEventListener('click', function (event) {
+  navItem.addEventListener('click', (event) => {
     event.preventDefault();
     window.scrollTo({
       top: section.offsetTop,
