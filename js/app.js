@@ -25,7 +25,7 @@
 const sections = document.querySelectorAll('section');
 const navBar = document.querySelector('.navbar__menu');
 const navList = document.querySelector('#navbar__list');
-
+const scrollToTopButton = document.querySelector('#scrollToTopBtn');
 
 /**
  * End Global Variables
@@ -67,6 +67,9 @@ const navLi = document.querySelectorAll(".menu__link");
 window.addEventListener('scroll', () => {
   let activeSection;
 
+  // Display scrollToTopButton based on scrollY position
+  scrollToTopButton.style.display = this.scrollY >= 500 ? "block" : "none";
+
   // Search for active section
   sections.forEach((section) => {
     const sectionTop = section.offsetTop;
@@ -103,6 +106,15 @@ function scrollBehavior(navItem, section) {
     });
   });
 }
+
+
+// Scroll to top of the Landing Page
+scrollToTopButton.addEventListener('click', function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
 
 /**
  * End Main Functions
